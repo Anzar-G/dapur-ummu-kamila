@@ -1,10 +1,15 @@
 import React from 'react';
 import { PRODUCTS } from '../constants';
-import { ProductCategory } from '../types';
+import { Product, ProductCategory } from '../types';
 import { ProductCarousel } from './ProductCarousel';
 import { Cookie, ChefHat, Plane } from 'lucide-react';
 
-export const Menu: React.FC = () => {
+interface MenuProps {
+  onAddToCart: (product: Product) => void;
+  onCheckoutNow: (product: Product) => void;
+}
+
+export const Menu: React.FC<MenuProps> = ({ onAddToCart, onCheckoutNow }) => {
   
   // Katalog 1: Kue Kering (Cookies)
   const cookiesProducts = PRODUCTS.filter(p => p.category === ProductCategory.COOKIES);
@@ -38,6 +43,8 @@ export const Menu: React.FC = () => {
         products={cookiesProducts}
         bgClass=""
         icon={<Cookie size={32} strokeWidth={1.5} />}
+        onAddToCart={onAddToCart}
+        onCheckoutNow={onCheckoutNow}
       />
 
       {/* Katalog 2: Fresh Daily (Semarang Only) */}
@@ -47,6 +54,8 @@ export const Menu: React.FC = () => {
         products={localProducts}
         bgClass="bg-white/50 backdrop-blur-sm my-4"
         icon={<ChefHat size={32} strokeWidth={1.5} />}
+        onAddToCart={onAddToCart}
+        onCheckoutNow={onCheckoutNow}
       />
 
       {/* Katalog 3: Bisa Kirim Luar Kota */}
@@ -56,6 +65,8 @@ export const Menu: React.FC = () => {
         products={shippableProducts}
         bgClass=""
         icon={<Plane size={32} strokeWidth={1.5} />}
+        onAddToCart={onAddToCart}
+        onCheckoutNow={onCheckoutNow}
       />
     </section>
   );

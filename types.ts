@@ -17,6 +17,10 @@ export interface Product {
   isBestSeller?: boolean;
 }
 
+export interface CartItem extends Product {
+  quantity: number;
+}
+
 export interface Testimonial {
   id: string;
   name: string;

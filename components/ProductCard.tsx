@@ -6,9 +6,11 @@ import { WHATSAPP_NUMBER } from '../constants';
 
 interface ProductCardProps {
   product: Product;
+  onAddToCart?: (product: Product) => void;
+  onCheckoutNow?: (product: Product) => void;
 }
 
-export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+export const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart, onCheckoutNow }) => {
   const [isVisible, setIsVisible] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
 
@@ -31,6 +33,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   }, []);
 
   const handleOrder = () => {
+    if (onCheckoutNow) {
+      onCheckoutNow(product);
+      return;
+    }
     const text = `Halo Dapur Ummu Kamila, saya mau pesan *${product.name}* yang harganya Rp${product.price.toLocaleString('id-ID')}. Apakah masih tersedia?`;
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, '_blank');
   };
@@ -76,15 +82,25 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                 Rp {product.price.toLocaleString('id-ID')}
               </span>
             </div>
-            <Button 
-              fullWidth 
-              variant="secondary" 
-              size="sm"
-              onClick={handleOrder}
-              icon={<MessageCircle size={16} />}
-            >
-              Pesan via WA
-            </Button>
+            <div className="space-y-2">
+              <Button 
+                fullWidth 
+                variant="secondary" 
+                size="sm"
+                onClick={() => onAddToCart && onAddToCart(product)}
+              >
+                Tambah ke Keranjang
+              </Button>
+              <Button 
+                fullWidth 
+                variant="primary" 
+                size="sm"
+                onClick={handleOrder}
+                icon={<MessageCircle size={16} />}
+              >
+                Checkout Sekarang
+              </Button>
+            </div>
           </div>
         </div>
       </div>

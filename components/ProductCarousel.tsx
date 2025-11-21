@@ -9,9 +9,11 @@ interface ProductCarouselProps {
   products: Product[];
   bgClass?: string;
   icon?: React.ReactNode;
+  onAddToCart?: (product: Product) => void;
+  onCheckoutNow?: (product: Product) => void;
 }
 
-export const ProductCarousel: React.FC<ProductCarouselProps> = ({ title, subtitle, products, bgClass = "", icon }) => {
+export const ProductCarousel: React.FC<ProductCarouselProps> = ({ title, subtitle, products, bgClass = "", icon, onAddToCart, onCheckoutNow }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsVisible, setItemsVisible] = useState(1);
 
@@ -89,7 +91,7 @@ export const ProductCarousel: React.FC<ProductCarouselProps> = ({ title, subtitl
                   className={`flex-shrink-0 px-4 ${itemsVisible === 2 ? 'w-1/2' : 'w-full'}`}
                 >
                   <div className="h-full">
-                     <ProductCard product={product} />
+                     <ProductCard product={product} onAddToCart={onAddToCart} onCheckoutNow={onCheckoutNow} />
                   </div>
                 </div>
               ))}

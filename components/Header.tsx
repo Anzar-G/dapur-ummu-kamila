@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ShoppingBag } from 'lucide-react';
+import { Menu, X, ShoppingBag, ShoppingCart } from 'lucide-react';
 import { Button } from './Button';
 
-export const Header: React.FC = () => {
+interface HeaderProps {
+  cartCount: number;
+  onCartClick: () => void;
+}
+
+export const Header: React.FC<HeaderProps> = ({ cartCount, onCartClick }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>('home');
@@ -91,6 +96,19 @@ export const Header: React.FC = () => {
                 {link.name}
               </a>
             ))}
+            <button
+              type="button"
+              onClick={onCartClick}
+              className="relative inline-flex items-center gap-2 text-sm text-brand-brown hover:text-brand-orange transition-colors"
+            >
+              <ShoppingCart size={18} />
+              <span>Keranjang</span>
+              {cartCount > 0 && (
+                <span className="absolute -top-2 -right-3 min-w-[18px] h-[18px] rounded-full bg-brand-orange text-white text-[10px] flex items-center justify-center px-1">
+                  {cartCount}
+                </span>
+              )}
+            </button>
             <Button 
               size="sm" 
               variant="primary"
@@ -124,6 +142,24 @@ export const Header: React.FC = () => {
               {link.name}
             </a>
           ))}
+          <button
+            type="button"
+            className="flex items-center justify-between py-3 px-4 text-gray-700 hover:bg-brand-brown/5 rounded-lg mt-1"
+            onClick={() => {
+              onCartClick();
+              setIsMobileMenuOpen(false);
+            }}
+          >
+            <span className="flex items-center gap-2">
+              <ShoppingCart size={18} className="text-brand-brown" />
+              <span>Keranjang</span>
+            </span>
+            {cartCount > 0 && (
+              <span className="min-w-[18px] h-[18px] rounded-full bg-brand-orange text-white text-[10px] flex items-center justify-center px-1">
+                {cartCount}
+              </span>
+            )}
+          </button>
           <div className="mt-4 px-4">
              <Button 
               fullWidth
