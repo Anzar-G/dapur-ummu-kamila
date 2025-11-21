@@ -1,7 +1,7 @@
 import { Product, ProductCategory, Testimonial, FaqItem } from './types';
 import { Heart, ShieldCheck, Truck, MousePointerClick } from 'lucide-react';
 
-export const WHATSAPP_NUMBER = "6281234567890"; // Example number
+export const WHATSAPP_NUMBER = "628996853721"; // +62 899-6853-721
 
 export const TRUST_BADGES = [
   {
