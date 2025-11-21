@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { Features } from './components/Features';
@@ -22,15 +22,47 @@ const App: React.FC = () => {
   const [isCartPageOpen, setIsCartPageOpen] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
+  // Load keranjang dari localStorage saat pertama kali render
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem('duk_cart');
+      if (stored) {
+        const parsed: CartItem[] = JSON.parse(stored);
+        if (Array.isArray(parsed)) {
+          setCartItems(parsed);
+        }
+      }
+    } catch (err) {
+      console.error('Gagal memuat keranjang dari localStorage', err);
+    }
+  }, []);
+
+  // Simpan keranjang ke localStorage setiap kali berubah
+  useEffect(() => {
+    try {
+      localStorage.setItem('duk_cart', JSON.stringify(cartItems));
+    } catch (err) {
+      console.error('Gagal menyimpan keranjang ke localStorage', err);
+    }
+  }, [cartItems]);
+
   const handleAddToCart = (product: Product) => {
     setCartItems(prev => {
       const existing = prev.find(item => item.id === product.id);
+      let next: CartItem[];
       if (existing) {
-        return prev.map(item =>
+        next = prev.map(item =>
           item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
         );
+      } else {
+        next = [...prev, { ...product, quantity: 1 }];
       }
-      return [...prev, { ...product, quantity: 1 }];
+      try {
+        localStorage.setItem('duk_cart', JSON.stringify(next));
+      } catch (err) {
+        console.error('Gagal menyimpan keranjang ke localStorage dari handleAddToCart', err);
+      }
+      return next;
     });
 
     setToastMessage(`${product.name} ditambahkan ke keranjang`);
@@ -46,21 +78,40 @@ const App: React.FC = () => {
   };
 
   const handleRemoveFromCart = (id: string) => {
-    setCartItems(prev => prev.filter(item => item.id !== id));
+    setCartItems(prev => {
+      const next = prev.filter(item => item.id !== id);
+      try {
+        localStorage.setItem('duk_cart', JSON.stringify(next));
+      } catch (err) {
+        console.error('Gagal menyimpan keranjang ke localStorage dari handleRemoveFromCart', err);
+      }
+      return next;
+    });
   };
 
   const handleChangeQuantity = (id: string, delta: number) => {
-    setCartItems(prev =>
-      prev
+    setCartItems(prev => {
+      const next = prev
         .map(item =>
           item.id === id ? { ...item, quantity: Math.max(1, item.quantity + delta) } : item
         )
-        .filter(item => item.quantity > 0)
-    );
+        .filter(item => item.quantity > 0);
+      try {
+        localStorage.setItem('duk_cart', JSON.stringify(next));
+      } catch (err) {
+        console.error('Gagal menyimpan keranjang ke localStorage dari handleChangeQuantity', err);
+      }
+      return next;
+    });
   };
 
   const handleClearCart = () => {
     setCartItems([]);
+    try {
+      localStorage.setItem('duk_cart', JSON.stringify([]));
+    } catch (err) {
+      console.error('Gagal mengosongkan keranjang di localStorage', err);
+    }
   };
 
   const handleCloseCheckout = () => {
