@@ -16,6 +16,8 @@ interface ProductCarouselProps {
 export const ProductCarousel: React.FC<ProductCarouselProps> = ({ title, subtitle, products, bgClass = "", icon, onAddToCart, onCheckoutNow }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsVisible, setItemsVisible] = useState(1);
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+  const [touchDeltaX, setTouchDeltaX] = useState(0);
 
   useEffect(() => {
     const handleResize = () => {
@@ -42,6 +44,30 @@ export const ProductCarousel: React.FC<ProductCarouselProps> = ({ title, subtitl
     if (currentIndex > 0) {
       setCurrentIndex(prev => prev - 1);
     }
+  };
+
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (e.touches.length === 1) {
+      setTouchStartX(e.touches[0].clientX);
+      setTouchDeltaX(0);
+    }
+  };
+
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (touchStartX === null) return;
+    const currentX = e.touches[0].clientX;
+    setTouchDeltaX(currentX - touchStartX);
+  };
+
+  const handleTouchEnd = () => {
+    const threshold = 50; // px minimal untuk dianggap swipe
+    if (touchDeltaX > threshold) {
+      prevSlide();
+    } else if (touchDeltaX < -threshold) {
+      nextSlide();
+    }
+    setTouchStartX(null);
+    setTouchDeltaX(0);
   };
 
   return (
@@ -80,7 +106,12 @@ export const ProductCarousel: React.FC<ProductCarouselProps> = ({ title, subtitl
         </div>
 
         <div className="relative">
-          <div className="overflow-hidden -mx-4 py-4 px-1">
+          <div 
+            className="overflow-hidden -mx-4 py-4 px-1"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
             <div 
               className="flex transition-transform duration-500 ease-out"
               style={{ transform: `translateX(-${currentIndex * (100 / itemsVisible)}%)` }}

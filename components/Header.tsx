@@ -118,14 +118,29 @@ export const Header: React.FC<HeaderProps> = ({ cartCount, onCartClick }) => {
             </Button>
           </nav>
 
-          {/* Mobile Menu Toggle */}
-          <button 
-            className="md:hidden text-brand-brown p-2"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle Menu"
-          >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          {/* Mobile Actions: Keranjang + Menu Toggle */}
+          <div className="flex items-center gap-2 md:hidden">
+            <button
+              type="button"
+              onClick={onCartClick}
+              className="relative inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/80 text-brand-brown shadow-sm border border-brand-brown/10"
+              aria-label="Buka Keranjang"
+            >
+              <ShoppingCart size={18} />
+              {cartCount > 0 && (
+                <span className="absolute -top-1 -right-1 min-w-[16px] h-[16px] rounded-full bg-brand-orange text-white text-[10px] flex items-center justify-center px-1">
+                  {cartCount}
+                </span>
+              )}
+            </button>
+            <button 
+              className="md:hidden text-brand-brown p-2"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Toggle Menu"
+            >
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
       </div>
 
