@@ -17,8 +17,8 @@ import { CartItem, Product } from './types';
 
 const App: React.FC = () => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
-  const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
-  const [checkoutItems, setCheckoutItems] = useState<CartItem[]>([]);
+  const [isCheckoutOpen, setIsCheckoutOpen] = useState(false); // modal checkout langsung
+  const [checkoutItems, setCheckoutItems] = useState<CartItem[]>([]); // item untuk checkout langsung / helper
   const [isCartPageOpen, setIsCartPageOpen] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
@@ -39,21 +39,9 @@ const App: React.FC = () => {
     }, 2200);
   };
 
+  // Checkout langsung dari katalog: buka modal khusus dengan 1 produk
   const handleCheckoutNow = (product: Product) => {
-    // Pastikan produk sudah ada di keranjang minimal qty 1
-    setCartItems(prev => {
-      const existing = prev.find(item => item.id === product.id);
-      if (existing) {
-        return prev;
-      }
-      return [...prev, { ...product, quantity: 1 }];
-    });
-    setIsCartPageOpen(true);
-  };
-
-  const handleCheckoutFromCart = () => {
-    if (cartItems.length === 0) return;
-    setCheckoutItems(cartItems);
+    setCheckoutItems([{ ...product, quantity: 1 }]);
     setIsCheckoutOpen(true);
   };
 
@@ -135,6 +123,43 @@ const App: React.FC = () => {
         <Steps />
         <Testimonials />
         <FAQ />
+
+        {/* Modal checkout langsung (dari tombol Checkout Sekarang) */}
+        {isCheckoutOpen && checkoutItems.length > 0 && (
+          <section className="fixed inset-0 z-40 bg-black/40 flex items-center justify-center px-4 py-8">
+            <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 md:p-8 max-h-[90vh] overflow-y-auto relative">
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="font-playfair text-2xl md:text-3xl font-bold text-brand-brown">Checkout Produk</h2>
+                <button
+                  type="button"
+                  className="text-sm text-gray-500 hover:text-brand-brown"
+                  onClick={handleCloseCheckout}
+                >
+                  Tutup
+                </button>
+              </div>
+
+              <div className="mb-4 text-sm bg-brand-cream/60 border border-brand-brown/10 rounded-xl p-3 md:p-4">
+                <p className="font-semibold text-brand-brown mb-2">Ringkasan Pesanan:</p>
+                <ul className="space-y-1">
+                  {checkoutItems.map(item => (
+                    <li key={item.id} className="flex justify-between gap-3">
+                      <span className="text-gray-700 line-clamp-1">
+                        {item.name} x{item.quantity}
+                      </span>
+                      <span className="text-gray-800 font-medium">
+                        Rp {(item.price * item.quantity).toLocaleString('id-ID')}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <p className="text-sm text-gray-600 mb-4">Isi data di bawah ini, lalu Anda akan diarahkan ke WhatsApp untuk konfirmasi dengan admin.</p>
+              <CheckoutForm onCancel={handleCloseCheckout} onSubmit={handleSubmitCheckout} />
+            </div>
+          </section>
+        )}
 
         {isCartPageOpen && (
           <section className="fixed inset-0 z-40 bg-black/40 flex items-center justify-center px-4 py-8">
@@ -224,6 +249,7 @@ const App: React.FC = () => {
                       <CheckoutForm
                         onCancel={() => setIsCartPageOpen(false)}
                         onSubmit={(name, area, paymentMethod) => {
+                          // Checkout lewat keranjang: gunakan seluruh isi keranjang
                           setCheckoutItems(cartItems);
                           handleSubmitCheckout(name, area, paymentMethod);
                         }}
@@ -269,7 +295,7 @@ const App: React.FC = () => {
         </div>
       )}
       <Footer />
-      <FloatingWA />
+      {!isCartPageOpen && !isCheckoutOpen && <FloatingWA />}
     </div>
   );
 };
