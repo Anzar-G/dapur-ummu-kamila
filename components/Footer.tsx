@@ -1,5 +1,5 @@
 import React from 'react';
-import { Instagram, Facebook, ShoppingBag, MapPin, Phone, Mail, Heart } from 'lucide-react';
+import { Instagram, Facebook, ShoppingBag, MapPin, Phone, Mail, Heart, Clock } from 'lucide-react';
 import { WHATSAPP_NUMBER } from '../constants';
 
 export const Footer: React.FC = () => {
@@ -7,12 +7,12 @@ export const Footer: React.FC = () => {
     <footer className="bg-brand-dark text-brand-cream/80 pt-16 pb-8">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
-          
+
           {/* Brand Info */}
           <div>
-             <div className="flex items-center gap-2 mb-4 text-brand-gold">
-                <ShoppingBag size={24} />
-                <h2 className="font-playfair font-bold text-2xl">Dapur Ummu Kamila</h2>
+            <div className="flex items-center gap-2 mb-4 text-brand-gold">
+              <ShoppingBag size={24} />
+              <h2 className="font-playfair font-bold text-2xl">Dapur Ummu Kamila</h2>
             </div>
             <p className="mb-6 text-sm leading-relaxed max-w-sm">
               Menyajikan kue dan roti homemade berkualitas premium, dibuat segar setiap hari dengan bahan halal dan tanpa pengawet.
@@ -43,16 +43,20 @@ export const Footer: React.FC = () => {
             <h3 className="text-white font-playfair font-bold text-lg mb-6">Hubungi Kami</h3>
             <ul className="space-y-4 text-sm">
               <li className="flex items-start gap-3">
-                 <MapPin size={18} className="text-brand-gold mt-0.5 shrink-0" />
-                 <span>Jl. Merpati No. 123, Banyumanik, Semarang, Jawa Tengah</span>
+                <MapPin size={18} className="text-brand-gold mt-0.5 shrink-0" />
+                <span>Jl. Merpati No. 123, Banyumanik, Semarang, Jawa Tengah</span>
               </li>
               <li className="flex items-center gap-3">
-                 <Phone size={18} className="text-brand-gold shrink-0" />
-                 <span>+62 899-6853-721</span>
+                <Phone size={18} className="text-brand-gold shrink-0" />
+                <span>+62 899-6853-721</span>
               </li>
               <li className="flex items-center gap-3">
-                 <Mail size={18} className="text-brand-gold shrink-0" />
-                 <span>order@dapurummukamila.com</span>
+                <Clock size={18} className="text-brand-gold shrink-0" />
+                <span>Senin - Sabtu: 08.00 - 17.00 WIB</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <Mail size={18} className="text-brand-gold shrink-0" />
+                <span>order@dapurummukamila.com</span>
               </li>
             </ul>
           </div>
@@ -61,7 +65,7 @@ export const Footer: React.FC = () => {
 
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs">
           <p>&copy; {new Date().getFullYear()} Dapur Ummu Kamila. All rights reserved.</p>
-          <p className="flex items-center gap-1">Designed with <Heart size={12} fill="currentColor" className="text-brand-orange" /> for local business.</p>
+          <p className="flex items-center gap-1">Designed with <Heart size={12} fill="#ff4d4d" className="text-red-500" /> for local business.</p>
         </div>
       </div>
     </footer>

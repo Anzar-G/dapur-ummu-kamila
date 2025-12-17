@@ -21,9 +21,9 @@ export const Hero: React.FC = () => {
           {/* Decorative floating element */}
           <div className="absolute -top-20 -right-20 w-32 h-32 bg-brand-gold/20 rounded-full blur-3xl animate-pulse-slow"></div>
 
-          <div className="inline-flex items-center gap-2 px-5 py-2 mb-8 rounded-full bg-white/40 text-brand-dark font-medium text-sm backdrop-blur-md border border-white/50 shadow-sm hover:shadow-md transition-shadow cursor-default animate-fade-in">
-            <Sparkles size={16} className="text-brand-gold fill-brand-gold" />
-            <span className="tracking-wide">Cita Rasa Rumahan, Kualitas Istimewa</span>
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full bg-brand-orange/10 text-brand-orange font-bold text-xs uppercase tracking-widest border border-brand-orange/20 animate-fade-in">
+            <Sparkles size={14} className="fill-current" />
+            <span>Khusus Semarang & Bisa Kirim Luar Kota</span>
           </div>
 
           <h1 className="font-playfair text-5xl md:text-7xl font-bold text-brand-dark mb-6 leading-tight drop-shadow-sm animate-slide-up">
@@ -36,8 +36,8 @@ export const Hero: React.FC = () => {
             </span> Semarang
           </h1>
 
-          <p className="font-poppins text-gray-800 text-lg md:text-xl mb-10 leading-relaxed max-w-lg animate-slide-up [animation-delay:200ms]">
-            Fresh from oven, dibuat dengan bahan premium alami dan penuh cinta untuk menemani momen manis bersama keluarga Anda.
+          <p className="font-poppins text-gray-700 text-lg md:text-xl mb-8 leading-relaxed max-w-lg animate-slide-up [animation-delay:200ms]">
+            Rotinya lembut, kuenya lumer. Dibuat fresh setiap hari dari bahan premium untuk menemani momen spesial Anda.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 animate-slide-up [animation-delay:400ms]">
@@ -45,19 +45,19 @@ export const Hero: React.FC = () => {
               variant="primary"
               size="lg"
               className="shadow-xl shadow-brand-orange/20 hover:shadow-2xl hover:shadow-brand-orange/30 hover:-translate-y-1 transition-all"
-              onClick={() => document.getElementById('menu')?.scrollIntoView({ behavior: 'smooth' })}
-              icon={<ArrowRight size={20} />}
+              onClick={() => document.getElementById('final-cta')?.scrollIntoView({ behavior: 'smooth' })}
+              icon={<MessageCircle size={20} />}
             >
-              Lihat Menu
+              Pesan via WhatsApp
             </Button>
             <Button
               variant="outline"
               size="lg"
-              className="bg-white/60 backdrop-blur-md border-brand-brown/20 text-brand-brown hover:bg-brand-brown hover:text-white transition-all hover:border-brand-brown"
-              onClick={() => document.getElementById('final-cta')?.scrollIntoView({ behavior: 'smooth' })}
-              icon={<MessageCircle size={20} />}
+              className="bg-white/60 backdrop-blur-md border-brand-brown/30 text-brand-brown hover:bg-brand-brown/5 transition-all"
+              onClick={() => document.getElementById('menu')?.scrollIntoView({ behavior: 'smooth' })}
+              icon={<ArrowRight size={20} />}
             >
-              Pesan Sekarang
+              Lihat Menu
             </Button>
           </div>
 

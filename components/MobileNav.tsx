@@ -53,9 +53,10 @@ export const MobileNav: React.FC<MobileNavProps> = ({ cartCount, onCartClick, on
             badge: cartCount > 0 ? cartCount : null
         },
         {
-            icon: <MessageCircle size={20} />,
+            icon: <MessageCircle size={20} className="text-white" />,
             label: 'Chat',
-            onClick: () => window.open(`https://wa.me/${WHATSAPP_NUMBER}`, '_blank')
+            onClick: () => window.open(`https://wa.me/${WHATSAPP_NUMBER}`, '_blank'),
+            highlight: true
         },
     ];
 
@@ -68,15 +69,17 @@ export const MobileNav: React.FC<MobileNavProps> = ({ cartCount, onCartClick, on
                         <button
                             key={idx}
                             onClick={item.onClick}
-                            className="flex flex-col items-center justify-center p-2 min-w-[64px] group relative"
+                            className={`flex flex-col items-center justify-center p-2 min-w-[64px] group relative ${item.highlight ? '-mt-6' : ''}`}
                         >
                             <div className={`
-                      transition-colors duration-200 mb-1 p-1 rounded-xl
-                      ${item.label === 'Menu' ? 'text-brand-orange' : 'text-gray-400 group-hover:text-brand-brown'}
+                      transition-all duration-200 mb-1 p-2 rounded-2xl
+                      ${item.highlight
+                                    ? 'bg-green-500 shadow-lg shadow-green-500/30 scale-110 border-4 border-white'
+                                    : item.label === 'Menu' ? 'text-brand-orange bg-brand-orange/5' : 'text-gray-400 group-hover:text-brand-brown'}
                    `}>
                                 {item.icon}
                             </div>
-                            <span className={`text-[10px] font-medium transition-colors ${item.label === 'Menu' ? 'text-brand-brown font-bold' : 'text-gray-500'}`}>
+                            <span className={`text-[10px] font-medium transition-colors ${item.highlight ? 'text-green-600 font-bold' : item.label === 'Menu' ? 'text-brand-brown font-bold' : 'text-gray-500'}`}>
                                 {item.label}
                             </span>
 

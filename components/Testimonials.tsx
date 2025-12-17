@@ -16,30 +16,30 @@ export const Testimonials: React.FC = () => {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {TESTIMONIALS.map((item, idx) => (
-                        <div
-                            key={item.id}
-                            className="bg-white p-8 rounded-3xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 relative group border border-gray-100"
-                        >
+                    {TESTIMONIALS.map((item) => (
+                        <div key={item.id} className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-brand-brown/5 group">
                             <Quote className="absolute top-8 right-8 text-brand-orange/10 w-12 h-12 transform group-hover:scale-110 transition-transform" />
 
-                            <div className="flex gap-1 mb-6">
-                                {[...Array(item.rating)].map((_, i) => (
-                                    <Star key={i} size={18} className="fill-brand-gold text-brand-gold" />
-                                ))}
-                            </div>
-
-                            <p className="text-gray-700 italic mb-8 leading-relaxed text-lg opacity-90 relative z-10">"{item.content}"</p>
-
-                            <div className="flex items-center gap-4 pt-6 border-t border-gray-100">
-                                <div className="w-12 h-12 rounded-full bg-brand-cream/80 flex items-center justify-center text-brand-brown font-bold text-xl font-playfair">
-                                    {item.name.charAt(0)}
-                                </div>
+                            <div className="flex items-center gap-4 mb-6 relative z-10">
+                                <img
+                                    src={item.avatar}
+                                    alt={item.name}
+                                    className="w-14 h-14 rounded-full object-cover border-2 border-brand-cream shadow-sm"
+                                    loading="lazy"
+                                />
                                 <div>
-                                    <h4 className="font-playfair font-bold text-lg text-brand-dark">{item.name}</h4>
+                                    <h4 className="font-playfair font-bold text-lg text-gray-900">{item.name}</h4>
                                     <p className="text-xs text-brand-orange font-bold uppercase tracking-wider">{item.role}</p>
                                 </div>
                             </div>
+
+                            <div className="flex gap-1 mb-4 relative z-10 text-brand-gold">
+                                {[...Array(item.rating || 5)].map((_, i) => (
+                                    <Star key={i} size={14} fill="currentColor" />
+                                ))}
+                            </div>
+
+                            <p className="text-gray-600 italic leading-relaxed relative z-10">"{item.content}"</p>
                         </div>
                     ))}
                 </div>

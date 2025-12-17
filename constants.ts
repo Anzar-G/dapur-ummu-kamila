@@ -200,27 +200,30 @@ export const PRODUCTS: Product[] = [
   }
 ];
 
-export const TESTIMONIALS: Testimonial[] = [
+export const TESTIMONIALS = [
   {
-    id: 't1',
-    name: 'Ibu Sari',
-    role: 'Pelanggan Setia',
-    content: 'Nastar-nya juara! Lembut banget dan selai nanasnya kerasa fresh. Cocok buat hantaran.',
-    rating: 5
+    id: 1,
+    name: "Ibu Sarah",
+    role: "Ibu Rumah Tangga",
+    content: "Baru pertama coba nastarnya, langsung jatuh cinta! Lumernya pas, manisnya nggak bikin giung. Suami saya sampai minta stok lagi buat cemilan di kantor.",
+    rating: 5,
+    avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=100&auto=format&fit=crop"
   },
   {
-    id: 't2',
-    name: 'Mbak Dinda',
-    role: 'Mahasiswa',
-    content: 'Suka banget sama Brownies Mix-nya. Bisa nyicip semua rasa, packing aman sampai Jakarta.',
-    rating: 5
+    id: 2,
+    name: "Mbak Dini",
+    role: "Karyawan Swasta",
+    content: "Suka banget sama donatnya. Topingnya melimpah dan teksturnya lembut banget meski udah seharian. Cocok banget buat acara arisan atau kumpul keluarga.",
+    rating: 5,
+    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=100&auto=format&fit=crop"
   },
   {
-    id: 't3',
-    name: 'Pak Budi',
-    role: 'Wiraswasta',
-    content: 'Pizza-nya favorit anak-anak. Rotinya empuk, kejunya banyak. Mantap!',
-    rating: 5
+    id: 3,
+    name: "Pak Budi",
+    role: "Wiraswasta",
+    content: "Pelayanan ramah, pengiriman on time, dan yang paling penting rasanya konsisten enak. Udah langganan beli hampers lebaran di sini 2 tahun berturut-turut.",
+    rating: 5,
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=100&auto=format&fit=crop"
   }
 ];
 

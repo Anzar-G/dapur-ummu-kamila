@@ -63,8 +63,8 @@ export const Header: React.FC<HeaderProps> = ({ cartCount, onCartClick }) => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
-          ? 'bg-brand-cream/80 backdrop-blur-md shadow-sm py-3 border-b border-white/20'
-          : 'bg-transparent py-6'
+        ? 'bg-brand-cream/80 backdrop-blur-md shadow-sm py-3 border-b border-white/20'
+        : 'bg-transparent py-6'
         }`}
     >
       <div className="container mx-auto px-4 md:px-6">
@@ -91,14 +91,12 @@ export const Header: React.FC<HeaderProps> = ({ cartCount, onCartClick }) => {
                 key={link.name}
                 href={link.href}
                 className={`font-medium transition-all duration-300 text-sm tracking-wide relative hover:-translate-y-0.5 ${activeSection === link.href.replace('#', '')
-                    ? 'text-brand-orange font-semibold'
-                    : 'text-gray-700 hover:text-brand-brown'
+                  ? 'text-brand-orange font-semibold'
+                  : 'text-gray-700 hover:text-brand-brown'
                   }`}
               >
                 {link.name}
-                {activeSection === link.href.replace('#', '') && (
-                  <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-brand-orange"></span>
-                )}
+                <span className={`absolute -bottom-1 left-0 w-full h-0.5 bg-brand-orange transform origin-left transition-transform duration-300 ${activeSection === link.href.replace('#', '') ? 'scale-x-100' : 'scale-x-0'}`}></span>
               </a>
             ))}
             <div className="h-6 w-px bg-gray-300 mx-2"></div>
@@ -159,8 +157,8 @@ export const Header: React.FC<HeaderProps> = ({ cartCount, onCartClick }) => {
                 key={link.name}
                 href={link.href}
                 className={`py-4 px-6 text-lg font-medium rounded-xl transition-all ${activeSection === link.href.replace('#', '')
-                    ? 'bg-brand-brown/10 text-brand-brown translate-x-2'
-                    : 'text-gray-600 hover:bg-white/50'
+                  ? 'bg-brand-brown/10 text-brand-brown translate-x-2'
+                  : 'text-gray-600 hover:bg-white/50'
                   }`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
