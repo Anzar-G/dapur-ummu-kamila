@@ -15,27 +15,25 @@ export const FAQ: React.FC = () => {
 
         <div className="space-y-4">
           {FAQS.map((faq, index) => (
-            <div key={index} className="bg-white rounded-xl shadow-sm border border-brand-brown/5 overflow-hidden">
-              <button 
-                className="w-full flex items-center justify-between p-5 text-left focus:outline-none"
+            <div key={index} className="bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-brand-brown/5 overflow-hidden">
+              <button
+                className="w-full flex items-center justify-between p-6 text-left focus:outline-none hover:bg-brand-cream/20 transition-colors"
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
               >
-                <span className={`font-medium text-lg ${openIndex === index ? 'text-brand-orange' : 'text-gray-700'}`}>
+                <span className={`font-bold text-lg ${openIndex === index ? 'text-brand-brown' : 'text-gray-700'}`}>
                   {faq.question}
                 </span>
-                {openIndex === index ? (
-                  <ChevronUp className="text-brand-orange" />
-                ) : (
-                  <ChevronDown className="text-gray-400" />
-                )}
+                <ChevronDown
+                  className={`flex-shrink-0 transition-transform duration-300 ${openIndex === index ? 'rotate-180 text-brand-orange' : 'text-gray-400'
+                    }`}
+                />
               </button>
-              
-              <div 
-                className={`transition-all duration-300 ease-in-out overflow-hidden ${
-                  openIndex === index ? 'max-h-48 opacity-100' : 'max-h-0 opacity-0'
-                }`}
+
+              <div
+                className={`transition-all duration-300 ease-in-out overflow-hidden ${openIndex === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                  }`}
               >
-                <div className="p-5 pt-0 text-gray-600 leading-relaxed border-t border-gray-100">
+                <div className="p-6 pt-0 text-gray-600 leading-relaxed">
                   {faq.answer}
                 </div>
               </div>

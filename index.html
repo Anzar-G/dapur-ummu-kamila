@@ -1,55 +1,64 @@
 <!DOCTYPE html>
 <html lang="id">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dapur Ummu Kamila - Homemade Bakery Semarang</title>
-    <meta name="description" content="Kue & Roti Homemade Semarang. Cita Rasa Rumahan, Kualitas Istimewa." />
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              brand: {
-                brown: '#8B4513',
-                orange: '#D2691E',
-                cream: '#FDF6F0',
-                gold: '#D4AF37',
-                dark: '#3E2723',
-              }
-            },
-            fontFamily: {
-              playfair: ['"Playfair Display"', 'serif'],
-              poppins: ['"Poppins"', 'sans-serif'],
-            },
-            animation: {
-              'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-              'float': 'float 3s ease-in-out infinite',
-            },
-            keyframes: {
-              float: {
-                '0%, 100%': { transform: 'translateY(0)' },
-                '50%': { transform: 'translateY(-10px)' },
-              }
-            }
-          }
-        }
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dapur Ummu Kamila - Kue & Roti Homemade Premium Semarang</title>
+  <meta name="description"
+    content="Dapur Ummu Kamila menyajikan aneka kue kering (Nastar, Kastengel), brownies fudgy, donat kentang, dan roti homemade premium di Semarang. Dibuat fresh tanpa pengawet." />
+  <meta name="keywords"
+    content="kue kering semarang, nastar wisman, brownies semarang, donat kentang, roti homemade, dapur ummu kamila" />
+  <meta name="author" content="Dapur Ummu Kamila" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://dapurummukamila.com/" />
+  <meta property="og:title" content="Dapur Ummu Kamila - Premium Homemade Bakery" />
+  <meta property="og:description"
+    content="Nikmati kelezatan kue dan roti homemade premium. Nastar, Brownies, Donat, dan Pizza fresh from oven." />
+  <meta property="og:image"
+    content="https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=1000&auto=format&fit=crop" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:title" content="Dapur Ummu Kamila - Premium Homemade Bakery" />
+  <meta property="twitter:description"
+    content="Nikmati kelezatan kue dan roti homemade premium. Nastar, Brownies, Donat, dan Pizza fresh from oven." />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Bakery",
+        "name": "Dapur Ummu Kamila",
+        "image": "https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=1000&auto=format&fit=crop",
+        "telephone": "+628996853721",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Semarang",
+          "addressRegion": "Jawa Tengah",
+          "addressCountry": "ID"
+        },
+        "priceRange": "$$",
+        "servesCuisine": "Indonesian Bakery"
       }
     </script>
-    <style>
-      /* Smooth scroll behavior */
-      html {
-        scroll-behavior: smooth;
-      }
-    </style>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Tailwind CSS (Local Build) -->
+  <style>
+    /* Smooth scroll behavior */
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
   <script type="importmap">
 {
   "imports": {
@@ -60,10 +69,12 @@
   }
 }
 </script>
-<link rel="stylesheet" href="/index.css">
+  <link rel="stylesheet" href="/index.css">
 </head>
-  <body class="bg-brand-cream text-gray-800 font-poppins antialiased">
-    <div id="root"></div>
+
+<body class="bg-brand-cream text-gray-800 font-poppins antialiased">
+  <div id="root"></div>
   <script type="module" src="/index.tsx"></script>
 </body>
+
 </html>

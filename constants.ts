@@ -33,122 +33,170 @@ export const TRUST_BADGES = [
 export const PRODUCTS: Product[] = [
   {
     id: 'p1',
-    name: 'Marmer Cake Premium',
-    description: 'Bolu jadul dengan motif marmer klasik, tekstur lembut dan aroma butter yang wangi.',
-    price: 125000,
-    category: ProductCategory.CAKE,
-    image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=400&auto=format&fit=crop',
+    name: 'Nastar Wisman Premium',
+    description: 'Nastar lumer dengan butter wisman asli dan selai nanas homemade yang legit. Best seller setiap lebaran.',
+    price: 150000,
+    image: 'https://images.unsplash.com/photo-1598218175510-449a0ce645c3?q=80&w=1000&auto=format&fit=crop',
+    category: ProductCategory.COOKIES,
+    isBestSeller: true,
     isShippable: true,
-    isBestSeller: true
+    pairing: 'Teh Hangat Tawar',
+    stockLabel: '🔥 Terjual 50+ Hari Ini'
   },
   {
     id: 'p2',
-    name: 'Brownies Lumer',
-    description: 'Brownies coklat dengan tekstur sangat lembut dan saus coklat lumer. Khusus area Semarang.',
-    price: 65000,
-    category: ProductCategory.CAKE,
-    image: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476d?q=80&w=400&auto=format&fit=crop',
-    isShippable: false, // Local only as requested
-    isBestSeller: true
+    name: 'Kastengel Keju Edam',
+    description: 'Kastengel super renyah dengan taburan keju edam melimpah. Gurihnya bikin ketagihan.',
+    price: 165000,
+    image: 'https://images.unsplash.com/photo-1630409351241-e90e7f5e47ac?q=80&w=1000&auto=format&fit=crop',
+    category: ProductCategory.COOKIES,
+    isShippable: true,
+    pairing: 'Es Kopi Susu',
+    stockLabel: 'Sisa 5 Slot'
   },
   {
     id: 'p3',
-    name: 'Roti Sisir Manis',
-    description: 'Roti sobek lembut dengan olesan butter cream gurih manis di setiap lapisnya.',
-    price: 45000,
-    category: ProductCategory.BREAD,
-    image: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=400&auto=format&fit=crop',
-    isShippable: true
+    name: 'Putri Salju Mede',
+    description: 'Kue putri salju lembut dengan campuran kacang mede cincang dan balutan gula halus dingin.',
+    price: 145000,
+    image: 'https://images.unsplash.com/photo-1621236378699-8597faf6a176?q=80&w=1000&auto=format&fit=crop',
+    category: ProductCategory.COOKIES,
+    isShippable: true,
+    pairing: 'Teh Earl Grey'
   },
   {
     id: 'p4',
-    name: 'Nastar Wisman',
-    description: 'Kue kering klasik dengan selai nanas homemade dan butter wisman asli.',
-    price: 145000,
+    name: 'Thumbprint Strawberry',
+    description: 'Cookies klasik dengan selai strawberry di tengahnya. Manis asam segar dalam setiap gigitan.',
+    price: 135000,
+    image: 'https://images.unsplash.com/photo-1605256488730-149fa869ce00?q=80&w=1000&auto=format&fit=crop',
     category: ProductCategory.COOKIES,
-    image: 'https://images.unsplash.com/photo-1569955831340-35c59646572f?q=80&w=400&auto=format&fit=crop',
-    isShippable: true
+    isShippable: true,
+    pairing: 'Susu Hangat'
   },
+  // New Products
   {
     id: 'p5',
-    name: 'Korean Garlic Bread',
-    description: 'Roti bun dengan cream cheese garlic yang gurih dan creamy.',
-    price: 25000,
-    category: ProductCategory.BREAD,
-    image: 'https://images.unsplash.com/photo-1620508926235-5b3d7520f67d?q=80&w=400&auto=format&fit=crop',
-    isShippable: false
+    name: 'Nastar (800ml)',
+    description: 'Nastar klasik dengan rasa autentik dalam kemasan toples 800ml.',
+    price: 70000,
+    image: 'https://images.unsplash.com/photo-1598218175510-449a0ce645c3?q=80&w=1000&auto=format&fit=crop', // Reusing nastar image
+    category: ProductCategory.COOKIES,
+    isShippable: true,
+    pairing: 'Teh Melati',
+    stockLabel: 'Best Value'
   },
   {
     id: 'p6',
-    name: 'Risoles Mayo',
-    description: 'Kulit risol lembut berisi smoked beef, telur rebus, dan mayones spesial.',
-    price: 35000,
-    category: ProductCategory.SNACK,
-    image: 'https://images.unsplash.com/photo-1628804706162-55a885e68d12?q=80&w=400&auto=format&fit=crop',
-    isShippable: false
+    name: 'Kastengel (800ml)',
+    description: 'Kastengel gurih dengan keju pilihan dalam kemasan toples 800ml.',
+    price: 70000,
+    image: 'https://images.unsplash.com/photo-1630409351241-e90e7f5e47ac?q=80&w=1000&auto=format&fit=crop', // Reusing kastengel image
+    category: ProductCategory.COOKIES,
+    isShippable: true,
+    pairing: 'Kopi Hitam'
   },
   {
     id: 'p7',
-    name: 'Pizza Homemade',
-    description: 'Pizza roti empuk dengan topping sosis, paprika, mozzarella melimpah.',
-    price: 55000,
-    category: ProductCategory.SNACK,
-    image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=400&auto=format&fit=crop',
-    isShippable: false
+    name: 'Kue Salju Mete (800ml)',
+    description: 'Kue salju lembut dengan kacang mete dalam kemasan toples 800ml.',
+    price: 80000,
+    image: 'https://images.unsplash.com/photo-1621236378699-8597faf6a176?q=80&w=1000&auto=format&fit=crop', // Reusing putri salju image
+    category: ProductCategory.COOKIES,
+    isShippable: true,
+    pairing: 'Coklat Panas'
   },
   {
     id: 'p8',
-    name: 'Donat Kentang Gula',
-    description: 'Donat kentang kampung yang empuk dengan taburan gula halus dingin.',
-    price: 25000,
-    category: ProductCategory.BREAD,
-    image: 'https://images.unsplash.com/photo-1551024601-bec0273e8a9e?q=80&w=400&auto=format&fit=crop',
-    isShippable: false
+    name: 'Kue Semprit Klasik (800ml)',
+    description: 'Kue semprit klasik yang renyah dan manis dalam kemasan toples 800ml.',
+    price: 60000,
+    image: 'https://images.unsplash.com/photo-1605256488730-149fa869ce00?q=80&w=1000&auto=format&fit=crop', // Reusing cookies
+    category: ProductCategory.COOKIES,
+    isShippable: true,
+    pairing: 'Teh Tawar'
   },
   {
     id: 'p9',
-    name: 'Putri Salju',
-    description: 'Kue kering lumer dimulut dengan balutan gula halus, menggunakan kacang mete pilihan.',
-    price: 135000,
-    category: ProductCategory.COOKIES,
-    image: 'https://images.unsplash.com/photo-1598346762291-aee885091327?q=80&w=400&auto=format&fit=crop',
-    isShippable: true
+    name: 'Donat Aneka Toping (12pcs)',
+    description: 'Donat kentang lembut dengan aneka toping pilihan (Coklat, Keju, Kacang, dll).',
+    price: 35000,
+    image: 'https://images.unsplash.com/photo-1551024601-5629436bb94f?q=80&w=1000&auto=format&fit=crop',
+    category: ProductCategory.BREAD,
+    isShippable: false,
+    pairing: 'Kopi Susu Gula Aren',
+    stockLabel: '⏳ Pre-Order H-1'
   },
-   {
+  {
     id: 'p10',
-    name: 'Lapis Surabaya',
-    description: 'Kue lapis legit premium 3 lapis dengan selai strawberry di tengahnya.',
-    price: 110000,
-    category: ProductCategory.CAKE,
-    image: 'https://images.unsplash.com/photo-1605883705077-8d3d3cebe78c?q=80&w=400&auto=format&fit=crop',
-    isShippable: true
+    name: 'Donat (6pcs)',
+    description: 'Paket hemat donat kentang isi 6 pcs. Lembut dan fresh.',
+    price: 20000,
+    image: 'https://images.unsplash.com/photo-1551024601-5629436bb94f?q=80&w=1000&auto=format&fit=crop',
+    category: ProductCategory.BREAD,
+    isShippable: false,
+    pairing: 'Es Jeruk'
   },
   {
     id: 'p11',
-    name: 'Sagu Keju Lumer',
-    description: 'Kue kering sagu dengan keju edam pilihan, tekstur lumer di mulut.',
-    price: 85000,
-    category: ProductCategory.COOKIES,
-    image: 'https://images.unsplash.com/photo-1567155237767-4f2544073c95?q=80&w=400&auto=format&fit=crop',
-    isShippable: true
+    name: 'Fudgy Brownies Toping Full Almond',
+    description: 'Brownies nyoklat banget dengan tekstur fudgy dan toping almond melimpah.',
+    price: 70000,
+    image: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?q=80&w=1000&auto=format&fit=crop',
+    category: ProductCategory.CAKE,
+    isShippable: true,
+    pairing: 'Gelato Vanilla',
+    stockLabel: 'Sisa 3 Loyang'
   },
   {
     id: 'p12',
-    name: 'Kastengel Premium',
-    description: 'Stik keju renyah dengan taburan keju cheddar melimpah.',
-    price: 140000,
-    category: ProductCategory.COOKIES,
-    image: 'https://images.unsplash.com/photo-1612386273994-e4a4d059df2b?q=80&w=400&auto=format&fit=crop',
-    isShippable: true
+    name: 'Fudgy Brownies Toping Choco Chip',
+    description: 'Brownies fudgy klasik dengan taburan choco chip yang crunchy.',
+    price: 70000,
+    image: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?q=80&w=1000&auto=format&fit=crop',
+    category: ProductCategory.CAKE,
+    isShippable: true,
+    pairing: 'Susu Dingin'
   },
   {
     id: 'p13',
-    name: 'Lidah Kucing',
-    description: 'Kue tipis renyah dan manis dengan aroma butter yang kuat.',
-    price: 90000,
-    category: ProductCategory.COOKIES,
-    image: 'https://images.unsplash.com/photo-1579306194872-64d3b7bac4c2?q=80&w=400&auto=format&fit=crop',
-    isShippable: true
+    name: 'Fudgy Brownies Full Keju',
+    description: 'Perpaduan manisnya coklat dan gurihnya parutan keju yang tebal.',
+    price: 70000,
+    image: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?q=80&w=1000&auto=format&fit=crop',
+    category: ProductCategory.CAKE,
+    isShippable: true,
+    pairing: 'Teh Tarik'
+  },
+  {
+    id: 'p14',
+    name: 'Fudgy Brownies Toping Mix',
+    description: 'Bimbang pilih toping? Pilih varian mix untuk mencoba semua rasa!',
+    price: 80000,
+    image: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?q=80&w=1000&auto=format&fit=crop',
+    category: ProductCategory.CAKE,
+    isShippable: true,
+    pairing: 'Kopi Pait'
+  },
+  {
+    id: 'p15',
+    name: 'Pizza Mozzarella Smoke Beef (22cm)',
+    description: 'Pizza homemade empuk dengan toping smoke beef dan keju mozzarella mulur.',
+    price: 50000,
+    image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=1000&auto=format&fit=crop',
+    category: ProductCategory.SNACK,
+    isShippable: false,
+    pairing: 'Soda Gembira'
+  },
+  {
+    id: 'p16',
+    name: 'Pizza Mozzarella Sosis (22cm)',
+    description: 'Pizza favorit anak-anak dengan irisan sosis sapi dan keju mozzarella.',
+    price: 45000,
+    image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=1000&auto=format&fit=crop', // Reusing pizza
+    category: ProductCategory.SNACK,
+    isShippable: false,
+    pairing: 'Lemon Tea'
   }
 ];
 
@@ -157,21 +205,21 @@ export const TESTIMONIALS: Testimonial[] = [
     id: 't1',
     name: 'Ibu Sari',
     role: 'Pelanggan Setia',
-    content: 'Marmer cake-nya juara! Lembut banget dan nggak seret. Cocok buat hantaran acara keluarga.',
+    content: 'Nastar-nya juara! Lembut banget dan selai nanasnya kerasa fresh. Cocok buat hantaran.',
     rating: 5
   },
   {
     id: 't2',
     name: 'Mbak Dinda',
     role: 'Mahasiswa',
-    content: 'Suka banget sama Browniesnya, nyoklat banget. Packing aman sampai Jakarta.',
+    content: 'Suka banget sama Brownies Mix-nya. Bisa nyicip semua rasa, packing aman sampai Jakarta.',
     rating: 5
   },
   {
     id: 't3',
     name: 'Pak Budi',
     role: 'Wiraswasta',
-    content: 'Langganan Roti Sisir buat sarapan anak-anak. Rasanya otentik seperti resep nenek.',
+    content: 'Pizza-nya favorit anak-anak. Rotinya empuk, kejunya banyak. Mantap!',
     rating: 5
   }
 ];
@@ -179,15 +227,15 @@ export const TESTIMONIALS: Testimonial[] = [
 export const FAQS: FaqItem[] = [
   {
     question: "Berapa lama kue tahan di suhu ruang?",
-    answer: "Untuk cake dan brownies tahan 3-4 hari di suhu ruang, dan hingga 1 minggu di kulkas. Untuk kue kering bisa tahan 1-2 bulan dalam wadah tertutup rapat."
+    answer: "Untuk brownies tahan 7 hari di suhu ruang, donat & pizza sebaiknya dikonsumsi hari ini. Kue kering tahan 1-2 bulan dalam toples tertutup rapat."
   },
   {
     question: "Apakah pengiriman ke luar kota aman?",
-    answer: "Sangat aman. Kami menggunakan bubble wrap tebal, box kokoh, dan stiker 'Fragile' untuk memastikan kue sampai dengan utuh. Khusus produk bertanda 'Luar Kota'."
+    answer: "Sangat aman untuk Brownies dan Kue Kering. Kami menggunakan bubble wrap tebal dan box kokoh. Donat & Pizza khusus pengiriman instan area Semarang."
   },
   {
     question: "Apakah harus Pre-Order (PO)?",
-    answer: "Sebagian besar produk kami 'Made by Order' untuk menjamin kesegaran. Sebaiknya pesan H-1 atau H-2 sebelum hari pengiriman."
+    answer: "Sebagian besar produk kami 'Made by Order' untuk menjamin kesegaran. Sebaiknya pesan H-1."
   },
   {
     question: "Bisa request ucapan untuk kirim kado?",

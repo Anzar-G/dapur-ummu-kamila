@@ -42,63 +42,99 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart, 
   };
 
   return (
-    <div 
+    <div
       ref={cardRef}
-      className={`h-full transition-all duration-700 ease-out transform ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-      }`}
+      className={`h-full transition-all duration-700 ease-out transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+        }`}
     >
-      <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden group flex flex-col h-full border border-brand-brown/5">
-        {/* Changed from aspect-square to fixed height landscape for better space optimization */}
-        <div className="relative overflow-hidden h-48 md:h-56 w-full">
-          <img 
-            src={product.image} 
-            alt={product.name} 
-            className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+      <div className="bg-white rounded-3xl shadow-sm hover:shadow-2xl transition-all duration-300 group flex flex-col h-full border border-gray-100 overflow-hidden hover:-translate-y-2">
+        {/* Image Container */}
+        <div className="relative overflow-hidden h-64 w-full bg-gray-50">
+          <img
+            src={product.image}
+            alt={`${product.name} - kue homemade premium Dapur Ummu Kamila`}
+            loading="lazy"
+            className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-1000 ease-in-out"
           />
-          {product.isShippable && (
-            <div className="absolute top-3 right-3 bg-brand-gold/90 backdrop-blur-sm text-brand-brown text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1 shadow-sm">
-              <Plane size={12} fill="currentColor" />
-              Luar Kota
-            </div>
-          )}
-          {product.isBestSeller && (
-            <div className="absolute top-3 left-3 bg-brand-brown text-brand-gold text-xs font-bold px-3 py-1 rounded-full shadow-sm">
-              Best Seller
+          {/* Overlay gradient on hover */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+          {(product.stockLabel || product.isBestSeller || !product.isShippable) && (
+            <div className="absolute top-4 right-4 z-10 flex flex-col items-end gap-2">
+              {/* Scarcity Badge (New) */}
+              {product.stockLabel && (
+                <span className="bg-red-500 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg border border-white/20 animate-pulse">
+                  {product.stockLabel}
+                </span>
+              )}
+              {product.isShippable && (
+                <span className="bg-white/95 backdrop-blur-md text-brand-brown text-[10px] font-bold px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-sm border border-brand-brown/10">
+                  <Plane size={11} className="text-brand-orange" />
+                  Luar Kota
+                </span>
+              )}
+              {product.isBestSeller && (
+                <span className="bg-brand-gold text-brand-brown text-xs font-bold px-3 py-1.5 rounded-full shadow-lg border border-white/20">
+                  Best Seller
+                </span>
+              )}
+              {!product.isShippable && (
+                <span className="bg-brand-orange text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg border border-white/20">
+                  Semarang Only
+                </span>
+              )}
             </div>
           )}
         </div>
-        
-        <div className="p-5 flex flex-col flex-grow">
-          <div className="flex justify-between items-start mb-2">
-            <h3 className="font-playfair font-bold text-lg md:text-xl text-gray-800 leading-tight line-clamp-1">{product.name}</h3>
+
+        <div className="p-6 md:p-8 flex flex-col flex-grow relative">
+          <div className="flex-grow">
+            <h3 className="font-playfair font-bold text-xl md:text-2xl text-brand-dark mb-3 leading-snug group-hover:text-brand-brown transition-colors">
+              {product.name}
+            </h3>
+
+            <p className="text-gray-600 text-sm mb-4 line-clamp-3 font-poppins leading-relaxed opacity-90">
+              {product.description}
+            </p>
+
+            {product.pairing && (
+              <div className="mb-6 flex items-start gap-2 text-xs bg-brand-orange/5 p-2 rounded-lg border border-brand-orange/10">
+                <span role="img" aria-label="pairing" className="mt-0.5">☕</span>
+                <p className="text-brand-brown">
+                  <span className="font-bold">Perfect Pairing:</span> {product.pairing}
+                </p>
+              </div>
+            )}
           </div>
-          
-          <p className="text-gray-500 text-sm mb-4 line-clamp-2 flex-grow">{product.description}</p>
-          
-          <div className="mt-auto pt-4 border-t border-gray-100">
-            <div className="flex items-center justify-between mb-4">
-               <span className="text-brand-orange font-bold text-lg">
-                Rp {product.price.toLocaleString('id-ID')}
-              </span>
+
+          <div className="mt-auto pt-6 border-t border-gray-100">
+            <div className="mb-5 bg-brand-cream/40 -mx-8 -mt-6 px-8 py-4 border-b border-brand-brown/5">
+              <div className="flex items-baseline gap-2">
+                <span className="text-xs text-brand-brown/70 font-medium uppercase tracking-wider">Harga</span>
+                <span className="text-3xl font-bold font-playfair text-brand-brown">
+                  <span className="text-lg align-top mr-1">Rp</span>
+                  {(product.price / 1000).toLocaleString('id-ID')}k
+                </span>
+              </div>
             </div>
-            <div className="space-y-2">
-              <Button 
-                fullWidth 
-                variant="secondary" 
-                size="sm"
+
+            <div className="flex flex-col md:flex-row gap-3">
+              <Button
+                fullWidth
+                variant="outline"
+                className="md:flex-1 border-brand-brown/30 text-brand-brown hover:bg-brand-brown/5"
                 onClick={() => onAddToCart && onAddToCart(product)}
               >
-                Tambah ke Keranjang
+                + Keranjang
               </Button>
-              <Button 
-                fullWidth 
-                variant="primary" 
-                size="sm"
+              <Button
+                fullWidth
+                variant="primary"
+                className="md:flex-[1.5] shadow-lg shadow-brand-orange/25 group-hover:shadow-brand-orange/40 transition-shadow"
                 onClick={handleOrder}
-                icon={<MessageCircle size={16} />}
+                icon={<MessageCircle size={18} />}
               >
-                Checkout Sekarang
+                Pesan
               </Button>
             </div>
           </div>

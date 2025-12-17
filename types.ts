@@ -15,6 +15,8 @@ export interface Product {
   image: string;
   isShippable: boolean; // Can be shipped out of town
   isBestSeller?: boolean;
+  pairing?: string;
+  stockLabel?: string;
 }
 
 export interface CartItem extends Product {
